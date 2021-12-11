@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: org.firebirdsql.jdbc.FBDriver
+    url: jdbc:firebirdsql:188.92.243.68/3052:/opt/db/DOU-DEMOKIROV2020.FDB?sql_dialect=3
+    driverClassName: org.firebirdsql.jdbc.FBDriver
+    username: SYSDBA
+    password: masterkey
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate: format_sql=true
+server:
+  port: 8081
