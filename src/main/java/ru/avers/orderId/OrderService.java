@@ -11,6 +11,8 @@ import java.util.Map;
 @Component
 public class OrderService {
 
+    static int update = 0;
+    static int nofind = 0;
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -26,7 +28,14 @@ public class OrderService {
 
         epguIdMap.forEach((k, v) -> {
             int i = jdbcTemplate.update(sql, v, k);
+            if (i == 1) {
+                update++;
+            } else {
+                nofind++;
+            }
             System.out.println("Updated " + i + " rows for EXTERNAL01 = " + k + " and EXTERNAL01 = " + v);
         });
+        System.out.println("Итого : Обновлено значений epgu_id - " + update + ". " +
+                "Не найдено значений по ключу ku_id - " + nofind);
     }
 }
